@@ -1,0 +1,42 @@
+{% extends 'layouts/default.njk' %}
+{% import "components.njk" as components %}
+
+{% set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+{% set nextPost = collections.posts | getNextCollectionItem(page) %}
+
+{% block main %}
+  <header>
+    <h1 class="text-green-700 text-3xl md:text-4xl lg:text-5xl font-bold mw-65ch">{{ title }}</h1>
+    {% if description %}
+      <p class="text-xl text-gray-700">{{ description | markdownify_inline | safe }}</p>
+    {% endif %}
+    {% if youtubeId %}
+      <div class="mt-8">
+        {{ components.youtube({id: youtubeId }) }}
+      </div>
+    {% elseif thumbnail %}
+      <div class="mt-8 relative pb-16/9">
+        <img class="absolute h-full w-full object-cover" src="{{ thumbnail }}" alt="">
+      </div>
+    {% endif %}
+  </header>
+  <div class="prose mt-8">
+    {{ content | markdownify | safe }}
+  </div>
+  <div class="mt-8 pt-8 border-t border-gray-200 mw-65ch">
+    <nav class="flex flex-col sm:flex-row justify-between">
+      {% if previousPost %}
+      <div class="mb-4 sm:mb-0">
+        <p class="font-bold">Previous post</p>
+        <a class="text-green-700 hover:underline" href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>
+      </div>
+      {% endif %}
+      {% if nextPost %}
+      <div class="sm:ml-auto">
+        <p class="font-bold sm:text-right">Next post</p>
+        <a class="text-green-700 hover:underline" href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>
+      </div>
+      {% endif %}
+    </nav>
+  </div>
+{% endblock %}

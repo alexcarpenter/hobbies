@@ -1,0 +1,54 @@
+---
+title: Posts
+pagination:
+  data: collections.posts
+  size: 10
+permalink: /posts/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber }}/{% endif %}
+---
+{% extends "layouts/default.njk" %}
+{% import "components.njk" as components %}
+
+{% block main %}
+  <div class="grid lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-2">
+      <ul class="divide-y divide-gray-200">
+        {% for entry in pagination.items %}
+        <li class="{% if loop.first %}pb-8{% else %}py-8{% endif %}">
+          {% if loop.first %}
+            <article>
+              {% if entry.data.thumbnail %}
+                <div class="relative pb-16/9">
+                  <img class="absolute h-full w-full object-cover" src="{{ entry.data.thumbnail }}" alt="">
+                </div>
+              {% endif %}
+              <div class="mt-4">
+                <h3 class="text-3xl md:text-4xl font-bold text-green-700"><a class="hover:underline" href="{{ entry.url }}">{{ entry.data.title }}</a></h3>
+                <p class="text-lg mw-65ch">{{ entry.data.description }}</p>
+              </div>
+            </article>
+          {% else %}
+            {{ components.entry({
+              imgSrc: entry.data.thumbnail,
+              heading: entry.data.title,
+              description: entry.data.description,
+              url: entry.url
+            }) }}
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% if pagination.href.previous or pagination.href.next %}
+      <nav class="pt-8 flex justify-between border-t border-gray-200">
+        {% if pagination.href.previous %}<span><a class="inline-flex items-center text-green-700 hover:underline" href="{{ pagination.href.previous }}"><svg class="mr-1" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Previous</a></span>{% endif %}
+        {% if pagination.href.next %}<span class="ml-auto"><a class="inline-flex items-center text-green-700 hover:underline" href="{{ pagination.href.next }}">Next <svg class="ml-1" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></span>{% endif %}
+      </nav>
+      {% endif %}
+    </div>
+
+    <div class="lg:col-span-1 lg:border-l border-gray-200 lg:pl-8">
+      <div class="space-y-8">
+        {# <p class="text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae deserunt libero nobis aut velit magni magnam nesciunt assumenda rerum dolorem necessitatibus, perspiciatis nostrum natus, tempore culpa cupiditate ipsam cum officiis.</p> #}
+      </div>
+    </div>
+  </div>
+{% endblock %}

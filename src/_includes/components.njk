@@ -1,0 +1,66 @@
+{% macro button(args) %}
+{% set variant = args.variant | default("green") %}
+<a href="{{ args.href }}" class="bg-{{ variant }}-700 hover:bg-{{ variant }}-900 text-white px-6 py-3 rounded {% if args.fill %}flex{% else %}inline-flex{% endif %} justify-center align-center">{{ args.text }}</a>
+{% endmacro%}
+
+{% macro card(args) %}
+<article class="flex flex-col bg-gray-100">
+{% if args.imgSrc %}
+<div class="relative pb-16/9">
+<img class="absolute h-full w-full object-cover" src="{{ args.imgSrc }}" alt="">
+</div>
+{% endif %}
+<div class="p-4">
+<h3 class="text-xl font-bold text-green-700">{{ args.heading }}</h3>
+<p class="mt-1">{{ args.description | safe }}</p>
+</div>
+<div class="mt-auto">
+{{ button({text: "Purchase on Amazon", href: "", fill: true}) }}
+</div>
+</article>
+{% endmacro %}
+
+{% macro entry(args) %}
+<article class="flex items-start">
+{% if args.imgSrc %}
+<div class="w-1/5 flex-shrink-0 mr-8">
+<div class="relative pb-1/1">
+<img class="absolute h-full w-full object-cover" src="{{ args.imgSrc }}" alt="">
+</div>
+</div>
+{% endif %}
+<div>
+<h3 class="text-xl font-bold text-green-700"><a class="hover:underline" href="{{ args.url }}">{{ args.heading }}</a></h3>
+<p class="mt-1">{{ args.description }}</p>
+</div>
+</article>
+{% endmacro %}
+
+{% macro youtube(args) %}
+<figure class="w-100 bg-gray-100">
+<div class="relative pb-16/9">
+<iframe class="absolute h-full w-full object-cover" title="{{ args.title }}" width="560" height="315" src="https://www.youtube.com/embed/{{ args.id }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+</figure>
+{% endmacro %}
+
+{% macro prosCons(args) %}
+<div class="bg-gray-100 border border-gray-300 grid lg:grid-cols-2">
+<div class="px-8 pt-8 pb-3 lg:col-span-1 lg:border-r border-gray-300">
+<h3 class="mt-0 text-green-700 text-xl">Pros</h3>
+<ul>
+{% for pro in args.pros %}
+<li>{{ pro }}</li>
+{% endfor %}
+</ul>
+</div>
+<div class="px-8 pt-8 pb-3 lg:col-span-1 border-t border-gray-300 lg:border-none">
+<h3 class="mt-0 text-green-700 text-xl">Cons</h3>
+<ul>
+{% for con in args.cons %}
+<li>{{ con }}</li>
+{% endfor %}
+</ul>
+</div>
+</div>
+{% endmacro %}
