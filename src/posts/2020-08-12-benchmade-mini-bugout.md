@@ -6,3 +6,7 @@ tags:
   - gear
 ---
 {% import "components.njk" as components %}
+{{ components.prosCons({
+  pros: ['Deep carry pocketclip'],
+  cons: ['Stiff pocketclip', 'Exposed pocketclip screws']
+})}}

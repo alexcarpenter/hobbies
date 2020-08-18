@@ -1857,6 +1857,10 @@ video {
   max-width: 65ch;
 }
 
+.leading-tighten {
+  line-height: 1.2;
+}
+
 .callout {
   position: relative;
   width: 100vw;

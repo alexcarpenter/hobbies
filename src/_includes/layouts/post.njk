@@ -6,7 +6,7 @@
 
 {% block main %}
   <header>
-    <h1 class="text-green-700 text-3xl md:text-4xl lg:text-5xl font-bold mw-65ch">{{ title }}</h1>
+    <h1 class="text-green-700 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mw-65ch">{{ title }}</h1>
     {% if description %}
       <p class="text-xl text-gray-700">{{ description | markdownify_inline | safe }}</p>
     {% endif %}
