@@ -43,23 +43,26 @@
 {% endmacro %}
 
 {% macro image(args) %}
-<figure class="w-100 bg-gray-100">
-<div class="relative pb-{{ args.ratio | default('16/9') }}">
+<figure class="w-100">
+<div class="relative pb-{{ args.ratio | default('16/9') }} bg-gray-100">
 <img class="m-0 absolute h-full w-full object-cover" src="{{ args.src }}" alt="{{ args.alt }}">
 </div>
+{% if args.caption %}
+<figcaption class="text-center text-gray-500">{{ args.caption | markdownify_inline | safe }}</figcaption>
+{% endif %}
 </figure>
 {% endmacro %}
 
 {% macro video(args) %}
-<figure class="w-100 bg-gray-100">
-<div class="relative pb-16/9">
+<figure class="w-100">
+<div class="relative pb-16/9 bg-gray-100">
 <video class="absolute h-full w-full object-cover" autoPlay loop muted controls>
 <source src="{{ args.src }}" type="video/mp4">
 <p>Your browser doesn't support HTML5 video. Here is a <a href="{{ args.src }}">link to the video</a> instead.</p>
 </video>
 </div>
 {% if args.caption %}
-<figcaption>{{ args.caption | markdownify_inline | safe }}</figcaption>
+<figcaption class="text-center text-gray-500">{{ args.caption | markdownify_inline | safe }}</figcaption>
 {% endif %}
 </figure>
 {% endmacro %}

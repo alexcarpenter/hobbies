@@ -14,7 +14,7 @@ permalink: /posts/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumbe
       <ul class="divide-y divide-gray-200">
         {% for entry in pagination.items %}
         <li class="{% if loop.first %}pb-8{% else %}py-8{% endif %}">
-          {% if loop.first %}
+          {% if loop.first and pagination.pageNumber == 0 %}
             <article>
               {% if entry.data.thumbnail %}
                 {{ components.image({ src: entry.data.thumbnail, alt: "" }) }}
