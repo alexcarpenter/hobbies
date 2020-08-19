@@ -15,9 +15,7 @@ module.exports = function (eleventyConfig) {
   
   eleventyConfig.addFilter('markdownify_inline', str => markdownIt.renderInline(str));
 
-  eleventyConfig.addFilter('take', (arr, amt = 5) => {
-    return arr.slice(0, amt);
-  });
+  eleventyConfig.addFilter('take', (arr, amt = 5) => arr.slice(0, amt));
 
   /**
    * Shortcodes
@@ -33,6 +31,9 @@ module.exports = function (eleventyConfig) {
     return collection.getFilteredByGlob('**/posts/*.md').reverse();
   });
 
+  /**
+   * ETC.
+   */
   eleventyConfig.setLibrary('md', markdownIt);
 
   eleventyConfig

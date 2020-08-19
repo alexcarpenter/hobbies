@@ -17,9 +17,7 @@ permalink: /posts/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumbe
           {% if loop.first %}
             <article>
               {% if entry.data.thumbnail %}
-                <div class="relative pb-16/9">
-                  <img class="absolute h-full w-full object-cover" src="{{ entry.data.thumbnail }}" alt="">
-                </div>
+                {{ components.image({ src: entry.data.thumbnail, alt: "" }) }}
               {% endif %}
               <div class="mt-4">
                 <h3 class="text-3xl md:text-4xl font-bold text-green-700"><a class="hover:underline" href="{{ entry.url }}">{{ entry.data.title }}</a></h3>

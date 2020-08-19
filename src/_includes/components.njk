@@ -24,9 +24,7 @@
 <article class="flex items-start">
 {% if args.imgSrc %}
 <div class="w-1/5 flex-shrink-0 mr-8">
-<div class="relative pb-1/1">
-<img class="absolute h-full w-full object-cover" src="{{ args.imgSrc }}" alt="">
-</div>
+{{ image({ src: args.imgSrc, alt: "", ratio: "1/1" } )}}
 </div>
 {% endif %}
 <div>
@@ -41,6 +39,28 @@
 <div class="relative pb-16/9">
 <iframe class="absolute h-full w-full object-cover" title="{{ args.title }}" width="560" height="315" src="https://www.youtube.com/embed/{{ args.id }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
+</figure>
+{% endmacro %}
+
+{% macro image(args) %}
+<figure class="w-100 bg-gray-100">
+<div class="relative pb-{{ args.ratio | default('16/9') }}">
+<img class="m-0 absolute h-full w-full object-cover" src="{{ args.src }}" alt="{{ args.alt }}">
+</div>
+</figure>
+{% endmacro %}
+
+{% macro video(args) %}
+<figure class="w-100 bg-gray-100">
+<div class="relative pb-16/9">
+<video class="absolute h-full w-full object-cover" autoPlay loop muted controls>
+<source src="{{ args.src }}" type="video/mp4">
+<p>Your browser doesn't support HTML5 video. Here is a <a href="{{ args.src }}">link to the video</a> instead.</p>
+</video>
+</div>
+{% if args.caption %}
+<figcaption>{{ args.caption | markdownify_inline | safe }}</figcaption>
+{% endif %}
 </figure>
 {% endmacro %}
 

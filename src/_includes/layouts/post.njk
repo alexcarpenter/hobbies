@@ -15,12 +15,18 @@
         {{ components.youtube({id: youtubeId }) }}
       </div>
     {% elseif thumbnail %}
-      <div class="mt-8 relative pb-16/9">
-        <img class="absolute h-full w-full object-cover" src="{{ thumbnail }}" alt="">
+      <div class="mt-8">
+        {{ components.image({ src: thumbnail, alt: ""}) }}
       </div>
     {% endif %}
   </header>
   <div class="prose mt-8">
+    {% if pros and cons %}
+      {{ components.prosCons({
+        pros: pros,
+        cons: cons
+      })}}
+    {% endif %}
     {{ content | markdownify | safe }}
   </div>
   <div class="mt-8 pt-8 border-t border-gray-200 mw-65ch">
