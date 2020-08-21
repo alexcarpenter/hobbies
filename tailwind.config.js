@@ -3,9 +3,11 @@ module.exports = {
   purge: {
     content: [
       './src/**/**/*.html',
-      './src/**/**/*.njk',
+      './src/**/**/**/*.njk',
     ],
-    whitelist: ['pb-1/1']
+    options: {
+      whitelist: ['pb-1/1']
+    }
   },
   theme: {
     typography: (theme) => ({
