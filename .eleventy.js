@@ -5,6 +5,8 @@ const markdownIt = require('markdown-it')({
   linkify: true
 });
 
+const ENV = require('./src/_data/env.js');
+
 module.exports = function (eleventyConfig) {
   /**
    * Filters
@@ -28,7 +30,11 @@ module.exports = function (eleventyConfig) {
    * Collections
    */
   eleventyConfig.addCollection('posts', collection => {
-    return collection.getFilteredByGlob('**/posts/*.md').reverse();
+    const published = (p) =>
+      ENV.environment === 'production' ? !p.data.draft : true;
+    return [
+      ...collection.getFilteredByGlob('**/posts/*.md').filter(published),
+    ].reverse();
   });
 
   /**

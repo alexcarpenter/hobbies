@@ -1,6 +1,7 @@
 {% macro button(args) %}
 {% set variant = args.variant | default("green") %}
-<a href="{{ args.href }}" class="bg-{{ variant }}-700 hover:bg-{{ variant }}-900 text-white px-6 py-3 rounded {% if args.fill %}flex{% else %}inline-flex{% endif %} justify-center align-center">{{ args.text }}</a>
+{% set bordered = args.bordered | default(true) %}
+<a href="{{ args.href }}" class="bg-{{ variant }}-700 hover:bg-{{ variant }}-900 text-white px-6 py-3{% if args.rounded %} rounded{% endif %}{% if args.fill %} flex{% else %} inline-flex{% endif %} justify-center align-center">{{ args.text }}</a>
 {% endmacro%}
 
 {% macro card(args) %}
@@ -15,7 +16,7 @@
 <p class="mt-1">{{ args.description | safe }}</p>
 </div>
 <div class="mt-auto">
-{{ button({text: "Purchase on Amazon", href: "", fill: true}) }}
+{{ button({text: "Purchase on Amazon", href: "", fill: true, rounded: false}) }}
 </div>
 </article>
 {% endmacro %}
@@ -68,7 +69,7 @@
 {% endmacro %}
 
 {% macro prosCons(args) %}
-<div class="bg-gray-100 border border-gray-200 grid lg:grid-cols-2">
+<div class="border border-gray-200 grid lg:grid-cols-2">
 <div class="px-8 pt-8 pb-3 lg:col-span-1 lg:border-r border-gray-200">
 <h3 class="mt-0 text-green-700 text-xl">Pros</h3>
 <ul>

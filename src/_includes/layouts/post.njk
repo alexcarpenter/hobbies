@@ -6,6 +6,7 @@
 
 {% block main %}
   <header>
+    {# <a class="mb-1 inline-flex items-center text-gray-700 hover:underline" href="">Purchase on Amazon <svg class="ml-1" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a> #}
     <h1 class="text-green-700 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mw-65ch">{{ title }}</h1>
     {% if description %}
       <p class="text-xl text-gray-700">{{ description | markdownify_inline | safe }}</p>
@@ -21,12 +22,13 @@
     {% endif %}
   </header>
   <div class="prose mt-8">
-    {% if pros and cons %}
+    {# <p class="text-xl font-bold text-green-700">Raiting: 6/10</p> #}
+    {# {% if pros and cons %}
       {{ components.prosCons({
         pros: pros,
         cons: cons
       })}}
-    {% endif %}
+    {% endif %} #}
     {{ content | markdownify | safe }}
   </div>
   <div class="mt-8 pt-8 border-t border-gray-200 mw-65ch">

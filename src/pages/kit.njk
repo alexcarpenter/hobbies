@@ -1,0 +1,29 @@
+---
+title: Kit
+description: All the tools and gear I use to produce content for this site and YouTube channel.
+permalink: /kit/
+---
+{% extends 'layouts/default.njk' %}
+{% import "components.njk" as components %}
+
+{% block main %}
+  <header>
+    <h1 class="text-green-700 text-5xl font-bold">{{ title }}</h1>
+    {% if description %}
+      <div class="prose">
+        <p class="text-xl text-gray-700">{{ description | markdownify_inline | safe }}</p>
+      </div>
+    {% endif %}
+  </header>
+  <div class="mt-8">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+      {% for item in kit %}
+        {{ components.card({
+          imgSrc: "http://placehold.it/800x450",
+          heading: item.heading,
+          description: "Habitasse consectetur dolor senectus nisl quisque ornare metus accumsan potenti diam sociosqu pharetra tortor ad enim penatibus phasellus fames aenean"
+        })}}
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
