@@ -1,9 +1,12 @@
 module.exports = {
   important: true,
-  purge: [
-    './src/**/**/*.html',
-    './src/**/**/*.njk',
-  ],
+  purge: {
+    content: [
+      './src/**/**/*.html',
+      './src/**/**/*.njk',
+    ],
+    whitelist: ['pb-1/1']
+  },
   theme: {
     typography: (theme) => ({
       default: {
