@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <title>{{ title | default("Alex Carpenter") }}</title>
+  <meta name="description" content="{{ description | default("Hobbies and gear") }}" />
+  {% set css %}
+    {% include "assets/styles/fonts.css" %}
+  {% endset %}
+  <style>{{ css | cssmin | safe }}</style>
   <link rel="stylesheet" href="/assets/styles/styles.css">
 </head>
 <body class="flex flex-col min-h-screen text-gray-900">
