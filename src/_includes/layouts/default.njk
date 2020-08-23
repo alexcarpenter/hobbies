@@ -12,10 +12,13 @@
   <link rel="stylesheet" href="/assets/styles/styles.css">
 </head>
 <body class="flex flex-col min-h-screen text-gray-900">
+  {% block pageStart %}{% endblock %}
   {% include "partials/banner.njk" %}
   <main class="w-full max-w-screen-lg mx-auto mb-auto px-4">
     {% block main %}{% endblock %}
   </main>
   {% include "partials/contentinfo.njk" %}
+  {% block pageEnd %}{% endblock %}
+  {% block pageJs %}{% endblock %}
 </body>
 </html>
