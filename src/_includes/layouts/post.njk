@@ -61,7 +61,7 @@
     <div class="absolute top-0 left-0 w-screen h-screen flex items-center justify-center z-10 pointer-events-none">
       <div class="max-w-screen-md pointer-events-auto">
         {% for image in gallery %}
-          <img class="{% if loop.index != 1 %}hidden{% endif %}" src="{{ image }}" alt="{{ title }} - {{ loop.index }}" loading="lazy">
+          <img class="hidden" src="{{ image }}" alt="{{ title }} - {{ loop.index }}" loading="lazy">
         {% endfor %}
       </div>
     </div>
@@ -87,10 +87,12 @@
 
     var show = function() {
       lightBox.classList.remove('hidden');
+      lightBoxImages[currentIndex].classList.remove('hidden');
     }
 
     var hide = function() {
       lightBox.classList.add('hidden');
+      lightBoxImages[currentIndex].classList.add('hidden');
       currentIndex = 0;
     }
 
