@@ -1905,6 +1905,11 @@ video {
   background-color: #8E9191;
 }
 
+.top-50 {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 /* purgecss end ignore */
 
 .space-y-0 > :not(template) ~ :not(template) {
