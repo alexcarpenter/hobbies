@@ -17,8 +17,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter('jsmin', code => {
     let minified = UglifyJS.minify(code);
-    if( minified.error ) {
-      console.log("UglifyJS error: ", minified.error);
+    if(minified.error) {
       return code;
     }
 
