@@ -1,6 +1,5 @@
 const CleanCSS = require('clean-css');
-const UglifyJS = require("uglify-js");
-const Terser = require('terser');
+const { minify } = require("terser");
 const markdownIt = require('markdown-it')({
   html: true,
   breaks: true,
@@ -15,14 +14,19 @@ module.exports = function (eleventyConfig) {
    */
   eleventyConfig.addFilter('cssmin', code => new CleanCSS({}).minify(code).styles);
 
-  eleventyConfig.addFilter('jsmin', code => {
-    let minified = UglifyJS.minify(code);
-    if(minified.error) {
-      return code;
+  eleventyConfig.addNunjucksAsyncFilter("jsmin", async function (
+    code,
+    callback
+  ) {
+    try {
+      const minified = await minify(code);
+      callback(null, minified.code);
+    } catch (err) {
+      console.error("Terser error: ", err);
+      // Fail gracefully.
+      callback(null, code);
     }
-
-    return minified.code;
-	});
+  });
   
   eleventyConfig.addFilter('markdownify', str => markdownIt.render(str));
   
