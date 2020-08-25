@@ -1,4 +1,5 @@
 const CleanCSS = require('clean-css');
+const UglifyJS = require("uglify-js");
 const Terser = require('terser');
 const markdownIt = require('markdown-it')({
   html: true,
@@ -14,15 +15,15 @@ module.exports = function (eleventyConfig) {
    */
   eleventyConfig.addFilter('cssmin', code => new CleanCSS({}).minify(code).styles);
 
-  // eleventyConfig.addFilter('jsmin', code => {
-  //   let minified = Terser.minify(code);
-  //     console.log(minified.code)
-  //   if (minified.error) {
-  //     console.log("Terser error: ", minified.error);
-  //     return code;
-  //   }
-  //   return minified.code;
-  // });
+  eleventyConfig.addFilter('jsmin', code => {
+    let minified = UglifyJS.minify(code);
+    if( minified.error ) {
+      console.log("UglifyJS error: ", minified.error);
+      return code;
+    }
+
+    return minified.code;
+	});
   
   eleventyConfig.addFilter('markdownify', str => markdownIt.render(str));
   

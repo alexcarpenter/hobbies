@@ -11,14 +11,23 @@
   <style>{{ css | cssmin | safe }}</style>
   <link rel="stylesheet" href="/assets/styles/styles.css">
 </head>
-<body class="flex flex-col min-h-screen text-gray-900">
+<body class="min-h-screen text-gray-900">
   {% block pageStart %}{% endblock %}
-  {% include "partials/banner.njk" %}
-  <main class="w-full max-w-screen-lg mx-auto mb-auto px-4">
-    {% block main %}{% endblock %}
-  </main>
-  {% include "partials/contentinfo.njk" %}
+  <div class="flex flex-col min-h-screen" data-page-container>
+    {% include "partials/banner.njk" %}
+    <main class="w-full max-w-screen-lg mx-auto mb-auto px-4">
+      {% block main %}{% endblock %}
+    </main>
+    {% include "partials/contentinfo.njk" %}
+  </div>
   {% block pageEnd %}{% endblock %}
-  {% block pageJs %}{% endblock %}
+  {# {% block pageJs %}{% endblock %} #}
+  {% if gallery %}
+    {% set js %}
+      {% include "assets/scripts/wicg-inert.js" %}
+      {% include "assets/scripts/lightbox.js" %}
+    {% endset %}
+    <script>{{ js | jsmin | safe }}</script>
+  {% endif %}
 </body>
 </html>
