@@ -27,6 +27,7 @@ permalink: /posts/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumbe
           {% else %}
             {{ components.entry({
               imgSrc: entry.data.thumbnail,
+              lazy: loop.index > 2,
               heading: entry.data.title,
               description: entry.data.description,
               url: entry.url
