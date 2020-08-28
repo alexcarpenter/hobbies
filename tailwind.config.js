@@ -6,7 +6,7 @@ module.exports = {
       './src/**/**/**/*.njk',
     ],
     options: {
-      whitelist: ['pb-1/1']
+      whitelist: ['pb-1/1', 'from-green-700', 'to-green-900']
     }
   },
   theme: {
