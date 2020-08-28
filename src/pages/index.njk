@@ -6,14 +6,14 @@ permalink: /
 
 {% block main %}
   {% callout %}
-    <h2 class="text-5xl font-bold text-white">Welcome!</h2>
-    <p class="mt-2 text-white text-xl mw-65ch">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus earum cum quis in repudiandae officia eligendi? Hic necessitatibus ullam deleniti a consequatur? Dolorum rem delectus reiciendis quod quae sequi illum?</p>
+    <h2 class="text-4xl md:text-5xl font-bold text-white">Welcome!</h2>
+    <p class="mt-2 text-white text-xl mw-65ch">I'm Alex Carpenter and this is my personal website where I share my love for outdoor cooking, RC cars, gear, and more.</p>
   {% endcallout %}
   <div class="mt-8">
     <div class="grid lg:grid-cols-3 gap-8">
       <div class="lg:col-span-2">
         <section>
-          <h2 class="text-4xl font-bold text-green-700">Latest posts</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-green-700">Latest posts</h2>
           {# <p class="text-lg text-gray-700 mw-65ch">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae saepe voluptatem libero impedit assumenda rem magnam dolorem vero repellendus consequuntur?</p> #}
           <ul class="divide-y divide-gray-200">
             {% for entry in collections.posts | take(3) %}
