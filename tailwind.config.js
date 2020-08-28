@@ -32,7 +32,7 @@ module.exports = {
           li: {
             marginTop: '0.25rem',
             marginBottom: '0.25rem'
-          }
+          },
         }
       }
     }),

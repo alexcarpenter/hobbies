@@ -29,12 +29,12 @@
   </header>
   <div class="prose mt-8">
     {# <p class="text-xl font-bold text-green-700">Raiting: 6/10</p> #}
-    {# {% if pros and cons %}
+    {% if pros and cons %}
       {{ components.prosCons({
         pros: pros,
         cons: cons
       })}}
-    {% endif %} #}
+    {% endif %}
     {{ content | markdownify | safe }}
   </div>
   <div class="mt-8 pt-8 border-t border-gray-200 mw-65ch">

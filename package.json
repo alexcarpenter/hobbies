@@ -6,13 +6,16 @@
     "start": "npm run tailwind && ELEVENTY_ENV=development npx eleventy --serve --watch",
     "build": "npm run tailwind:build && ELEVENTY_ENV=production npx eleventy",
     "tailwind": "NODE_ENV=development tailwindcss build src/assets/styles/tailwind.css -o src/assets/styles/styles.css -c tailwind.config.js",
-    "tailwind:build": "NODE_ENV=production tailwindcss build src/assets/styles/tailwind.css -o src/assets/styles/styles.css -c tailwind.config.js"
+    "tailwind:build": "NODE_ENV=production postcss src/assets/styles/tailwind.css -o src/assets/styles/styles.css"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.11.0",
     "@tailwindcss/typography": "^0.2.0",
+    "autoprefixer": "^9.8.6",
     "clean-css": "^4.2.3",
+    "cssnano": "^4.1.10",
     "markdown-it": "^11.0.0",
+    "postcss-cli": "^7.1.1",
     "tailwindcss": "^1.6.2",
     "terser": "^5.2.1",
     "uglify-js": "^3.10.2"
