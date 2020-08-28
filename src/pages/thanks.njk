@@ -1,0 +1,15 @@
+---
+title: Thanks
+description: Thanks for contacting me. I typically respond to emails within a couple of days. Should your enquiry be more urgent, please send me a message on [Twitter](https://twitter.com/hybrid_alex).
+permalink: /contact/thanks/
+---
+{% extends 'layouts/default.njk' %}
+
+{% block main %}
+  <header>
+    <h1 class="text-green-700 text-5xl font-bold">{{ title }}</h1>
+    <div class="prose">
+      <p class="text-xl text-gray-700">{{ description | markdownify_inline | safe }}</p>
+    </div>
+  </header>
+{% endblock %}
