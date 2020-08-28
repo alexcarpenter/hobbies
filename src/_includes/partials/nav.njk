@@ -1,7 +1,12 @@
+{% set items = [
+  { label: "Posts", slug: "/posts/" },
+  { label: "Kit", slug: "/kit/" },
+  { label: "Contact", slug: "/contact/" }
+] %}
 <nav>
   <ul class="flex space-x-8">
-    <li><a class="text-green-700 hover:underline" href="/posts">Posts</a></li>
-    <li><a class="text-green-700 hover:underline" href="/kit">Kit</a></li>
-    <li><a class="text-green-700 hover:underline" href="/contact">Contact</a></li>
+    {% for item in items %}
+      <li><a class="text-green-700 hover:underline{% if page.url == item.slug %} font-bold{% endif %}"{% if page.url == item.slug %} aria-current="page"{% endif %} href="{{ item.slug }}">{{ item.label }}</a></li>
+    {% endfor %}
   </ul>
 </nav>
