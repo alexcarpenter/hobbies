@@ -7,9 +7,7 @@
 {% macro card(args) %}
 <article class="flex flex-col bg-gray-100">
 {% if args.imgSrc %}
-<div class="relative pb-16/9">
-<img class="absolute h-full w-full object-cover" src="{{ args.imgSrc }}" alt="">
-</div>
+{{ image({ src: args.imgSrc, alt: "", lazy: args.lazy } )}}
 {% endif %}
 <div class="p-4">
 <h3 class="text-xl font-bold text-green-700">{{ args.heading }}</h3>
