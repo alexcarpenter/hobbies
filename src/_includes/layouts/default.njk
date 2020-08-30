@@ -3,8 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title | default("Alex Carpenter") }}</title>
-  <meta name="description" content="{{ description | default("Hobbies and gear") }}" />
+  <title>{{ title }} - Alex Carpenter</title>
+  <meta name="description" content="{% if description %}{{ description | markdownify_inline | strip_html }}{% endif %}" />
+  
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{% if description %}{{ description | markdownify_inline | strip_html }}{% endif %}">
+  <meta property="og:url" content="https://hobbies.alexcarpenter.me{{ page.url | permalink }}">
+  <meta property="og:image" content="https://hobbies.alexcarpenter.me{% if thumbnail %}{{ thumbnail }}{% else %}/assets/images/meta-logo.png{% endif %}">
+
+  <meta name="twitter:site" content="@hybrid_alex">
+  <meta name="twitter:creator" content="@hybrid_alex">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:card" content="{% if thumbnail %}summary_large_image{% else %}summary{% endif %}">
+  <meta name="twitter:image" content="https://hobbies.alexcarpenter.me{% if thumbnail %}{{ thumbnail }}{% endif %}">
+
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   {% set css %}
     {% include "assets/styles/fonts.css" %}
