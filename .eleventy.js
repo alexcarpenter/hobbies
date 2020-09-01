@@ -1,5 +1,6 @@
 const CleanCSS = require('clean-css');
 const { minify } = require("terser");
+const htmlmin = require('html-minifier');
 const markdownIt = require('markdown-it')({
   html: true,
   breaks: true,
@@ -7,6 +8,7 @@ const markdownIt = require('markdown-it')({
 });
 
 const ENV = require('./src/_data/env.js');
+// const PRODUCTS = require('./src/_data/products.json');
 
 module.exports = function (eleventyConfig) {
   /**
@@ -37,6 +39,21 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('strip_html', str => str.replace(/<script.*?<\/script>|<!--.*?-->|<style.*?<\/style>|<.*?>/g, ''));
 
   eleventyConfig.addFilter('permalink', str => str.replace(/\.html/g, ''));
+
+  /**
+   * Transforms
+   */
+  eleventyConfig.addTransform('htmlmin', (content, outputPath) => {
+    if (ENV.environment === 'production' && outputPath.indexOf('.html') > -1) {
+      let minified = htmlmin.minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true,
+      });
+      return minified;
+    }
+    return content;
+  });
 
   /**
    * Shortcodes

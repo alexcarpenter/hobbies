@@ -20,8 +20,8 @@ permalink: /posts/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumbe
                 {{ components.image({ src: entry.data.thumbnail, alt: "" }) }}
               {% endif %}
               <div class="mt-4">
-                <h3 class="text-3xl md:text-4xl font-bold text-green-700"><a class="hover:underline" href="{{ entry.url }}">{{ entry.data.title }}</a></h3>
-                <p class="text-lg mw-65ch">{{ entry.data.description }}</p>
+                <h3 class="text-3xl md:text-4xl leading-tight font-bold text-green-700"><a class="hover:underline" href="{{ entry.url }}">{{ entry.data.title }}</a></h3>
+                <p class="mt-1 text-lg mw-65ch">{{ entry.data.description }}</p>
               </div>
             </article>
           {% else %}
