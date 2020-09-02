@@ -20,7 +20,6 @@ permalink: /kit/
       {% for item in products %}
         {{ components.card({
           lazy: loop.index > 3,
-          imgSrc: "http://placehold.it/800x450",
           heading: item.heading,
           description: "Habitasse consectetur dolor senectus nisl quisque ornare metus accumsan potenti diam sociosqu pharetra tortor ad enim penatibus phasellus fames aenean"
         })}}
