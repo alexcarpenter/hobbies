@@ -11,6 +11,7 @@ permalink: /tagged/{{ tag | kebab }}/
 {% extends "layouts/default.njk" %}
 {% import "components.njk" as components %}
 
+{% set title = tag %}
 {% set taglist = collections[tag] %}
 {% set descriptionsMap = {
   'RC Cars': 'RC Cars are cool',
