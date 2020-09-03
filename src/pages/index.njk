@@ -6,6 +6,8 @@ permalink: /
 {% extends 'layouts/default.njk' %}
 {% import "components.njk" as components %}
 
+{% set entries = collections.posts %}
+
 {% block main %}
   {# {% callout %}
     <h2 class="text-4xl md:text-5xl font-bold text-white">Welcome!</h2>
@@ -16,7 +18,7 @@ permalink: /
     <p>View <a href="/tagged/rc-cars/" class="text-green-700 hover:underline">RC Cars</a>, <a href="/tagged/outdoor-cooking/" class="text-green-700 hover:underline">Outdoor cooking</a>, or <a href="/posts/" class="text-green-700 hover:underline">see all posts</a>.</p>
     <div class="mt-8 grid md:grid-cols-2 gap-8">
       <div class="md:col-span-1 pb-8 md:pb-0 border-b border-gray-200 md:border-none">
-        {% for entry in collections.posts | take(1) %}
+        {% for entry in entries | take(1) %}
         <article>
           {% if entry.data.thumbnail %}
             {{ components.image({ src: entry.data.thumbnail, alt: "" }) }}
@@ -30,7 +32,7 @@ permalink: /
       </div>
       <div class="md:col-span-1 md:border-l border-gray-200 md:pl-8">
         <ul class="divide-y divide-gray-200">
-          {% for entry in collections.posts | take(3) %}
+          {% for entry in entries | slice(1, 4) %}
             <li class="{% if loop.first %}pb-8 {% elseif loop.last %}pt-8 {% else %}py-8{% endif %}">
               {{ components.entry({
                 imgSrc: entry.data.thumbnail,

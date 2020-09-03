@@ -37,6 +37,10 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter('take', (arr, amt = 5) => arr.slice(0, amt));
 
+  eleventyConfig.addFilter('slice', (arr, start = 0, end) => arr.slice(start, end));
+
+  eleventyConfig.addFilter('shift', arr => arr.shift());
+
   eleventyConfig.addFilter('strip_html', str => str.replace(/<script.*?<\/script>|<!--.*?-->|<style.*?<\/style>|<.*?>/g, ''));
 
   eleventyConfig.addFilter('permalink', str => str.replace(/\.html/g, ''));
