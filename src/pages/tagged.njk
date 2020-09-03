@@ -11,10 +11,22 @@ permalink: /tagged/{{ tag | kebab }}/
 {% extends "layouts/default.njk" %}
 {% import "components.njk" as components %}
 
-{% set taglist = collections[ tag ] %}
+{% set taglist = collections[tag] %}
+{% set descriptionsMap = {
+  'RC Cars': 'RC Cars are cool',
+  'Outdoor Cooking': 'Outdoor Cooking is cool'
+} %}
+{% set description = descriptionsMap[tag] %}
 
 {% block main %}
-  <h2 class="text-4xl md:text-5xl font-bold text-green-700">{{ tag }}</h2>
+  <header>
+    <h1 class="text-green-700 text-5xl font-bold">{{ tag }}</h1>
+    {% if description %}
+      <div class="prose">
+        <p class="text-xl text-gray-700">{{ description | markdownify_inline | safe }}</p>
+      </div>
+    {% endif %}
+  </header>
   <div class="mt-8 grid lg:grid-cols-3 gap-8">
     <div class="lg:col-span-2">
       <ul class="divide-y divide-gray-200">
