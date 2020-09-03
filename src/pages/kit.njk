@@ -15,15 +15,18 @@ permalink: /kit/
       </div>
     {% endif %}
   </header>
-  <div class="mt-8">
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-      {% for item in products %}
-        {{ components.card({
-          lazy: loop.index > 3,
-          heading: item.heading,
-          description: "Habitasse consectetur dolor senectus nisl quisque ornare metus accumsan potenti diam sociosqu pharetra tortor ad enim penatibus phasellus fames aenean"
-        })}}
-      {% endfor %}
-    </div>
-  </div>
+  {% for category, items in products | groupby("category") %}
+    <section class="{% if loop.index > 1%}mt-16{% else %}mt-8{% endif %}">
+      <h2 class="text-3xl font-bold text-green-700 leading-tight pb-4 border-b border-gray-200">{{ category }}</h2>
+      <div class="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {% for item in items %}
+          {{ components.card({
+            lazy: loop.index > 3,
+            heading: item.heading,
+            description: "Habitasse consectetur dolor senectus nisl quisque ornare metus accumsan potenti diam sociosqu pharetra tortor ad enim penatibus phasellus fames aenean"
+          })}}
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
 {% endblock %}

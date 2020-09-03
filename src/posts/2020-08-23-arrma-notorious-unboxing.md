@@ -12,5 +12,5 @@ gallery:
     "/assets/images/arrma-notorious-6s-6.jpg",
     "/assets/images/arrma-notorious-6s-7.jpg",
   ]
-tags: [gear]
+tags: ["RC Cars"]
 ---

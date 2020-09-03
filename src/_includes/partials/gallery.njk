@@ -17,7 +17,7 @@
     </button>
   </nav>
   <div class="absolute top-50 left-0 right-0 flex items-center justify-center z-10 pointer-events-none">
-    <div class="max-w-screen-md pointer-events-auto">
+    <div class="max-w-screen-lg pointer-events-auto">
       {% for image in gallery %}
         <img class="hidden" src="{{ image }}" alt="{{ title }} - {{ loop.index }}" loading="lazy">
       {% endfor %}

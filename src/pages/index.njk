@@ -7,25 +7,59 @@ permalink: /
 {% import "components.njk" as components %}
 
 {% block main %}
-  {% callout %}
+  {# {% callout %}
     <h2 class="text-4xl md:text-5xl font-bold text-white">Welcome!</h2>
     <p class="mt-2 text-white text-xl mw-65ch">I'm Alex Carpenter and this is my personal website where I share my love for outdoor cooking, RC cars, gear, and more.</p>
-  {% endcallout %}
-  <div class="mt-8">
-    <div class="grid lg:grid-cols-3 gap-8">
-      <div class="lg:col-span-2">
+  {% endcallout %} #}
+  <section>
+    <h2 class="text-3xl md:text-4xl font-bold text-green-700">Latest posts</h2>
+    <p>View <a href="/tagged/rc-cars/" class="text-green-700 hover:underline">RC Cars</a>, <a href="/tagged/outdoor-cooking/" class="text-green-700 hover:underline">Outdoor cooking</a>, or <a href="/posts/" class="text-green-700 hover:underline">see all posts</a>.</p>
+    <div class="mt-8 grid md:grid-cols-2 gap-8">
+      <div class="md:col-span-1 pb-8 md:pb-0 border-b border-gray-200 md:border-none">
+        {% for entry in collections.posts | take(1) %}
+        <article>
+          {% if entry.data.thumbnail %}
+            {{ components.image({ src: entry.data.thumbnail, alt: "" }) }}
+          {% endif %}
+          <div class="mt-4">
+            <h3 class="text-3xl leading-tight font-bold text-green-700"><a class="hover:underline" href="{{ entry.url }}">{{ entry.data.title }}</a></h3>
+            <p class="mt-1 text-lg mw-65ch">{{ entry.data.description }}</p>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      <div class="md:col-span-1 md:border-l border-gray-200 md:pl-8">
+        <ul class="divide-y divide-gray-200">
+          {% for entry in collections.posts | take(3) %}
+            <li class="{% if loop.first %}pb-8 {% elseif loop.last %}pt-8 {% else %}py-8{% endif %}">
+              {{ components.entry({
+                imgSrc: entry.data.thumbnail,
+                heading: entry.data.title,
+                description: entry.data.description,
+                url: entry.url
+              }) }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+  </section>
+  {# <div class="mt-8">
+    <div class="grid lg:grid-cols-2 gap-8">
+      <div class="lg:col-span-1">
         <section>
           <h2 class="text-3xl md:text-4xl font-bold text-green-700">Latest posts</h2>
-          {# <p class="text-lg text-gray-700 mw-65ch">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae saepe voluptatem libero impedit assumenda rem magnam dolorem vero repellendus consequuntur?</p> #}
           <ul class="divide-y divide-gray-200">
-            {% for entry in collections.posts | take(3) %}
+            {% for entry in collections.posts | take(1) %}
               <li class="py-8">
-                {{ components.entry({
-                  imgSrc: entry.data.thumbnail,
-                  heading: entry.data.title,
-                  description: entry.data.description,
-                  url: entry.url
-                }) }}
+                <article>
+                  {% if entry.data.thumbnail %}
+                    {{ components.image({ src: entry.data.thumbnail, alt: "" }) }}
+                  {% endif %}
+                  <div class="mt-4">
+                    <h3 class="text-3xl md:text-4xl leading-tight font-bold text-green-700"><a class="hover:underline" href="{{ entry.url }}">{{ entry.data.title }}</a></h3>
+                    <p class="mt-1 text-lg mw-65ch">{{ entry.data.description }}</p>
+                  </div>
+                </article>
               </li>
             {% endfor %}
           </ul>
@@ -33,33 +67,21 @@ permalink: /
             <a href="/posts" class="text-green-700 hover:underline inline-flex items-center">View more posts <svg class="ml-1" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
           </div>
         </section>
-        {# <section class="mt-8">
-          <h2 class="text-4xl font-bold text-green-700">Favorite gear</h2>
-          <p class="text-lg text-gray-500 mw-65ch">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae saepe voluptatem libero impedit assumenda rem magnam dolorem vero repellendus consequuntur?</p>
-          <ul class="grid lg:grid-cols-2 gap-8 mt-8">
-            {% for entry in collections.posts | take(5) %}
-              <li>
-                {{ components.card({
-                  imgSrc: entry.data.thumbnail,
-                  heading: entry.data.title,
-                  description: entry.data.description,
-                  url: entry.url
-                }) }}
-              </li>
-            {% endfor %}
-          </ul>
-        </section> #}
       </div>
       <div class="lg:col-span-1 lg:border-l border-gray-200 lg:pl-8">
-        {# <h2 class="text-xl font-bold text-green-700 ">Favorite products</h2>
-        <div class="mt-4 grid grid-cols-2 gap-4">
-          {% products {
-            ids: [1, 2, 3]
-          } %}
-        </div> #}
-        {# <h3 class="text-xl font-bold text-green-700">Who's Alex?</h3>
-        <p class="mt-1 text-gray-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae deserunt libero nobis aut velit magni magnam nesciunt assumenda rerum dolorem necessitatibus, perspiciatis nostrum natus, tempore culpa cupiditate ipsam cum officiis.</p> #}
+        <ul class="divide-y divide-gray-200">
+          {% for entry in collections.posts | take(3) %}
+            <li class="py-8">
+              {{ components.entry({
+                imgSrc: entry.data.thumbnail,
+                heading: entry.data.title,
+                description: entry.data.description,
+                url: entry.url
+              }) }}
+            </li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
-  </div>
+  </div> #}
 {% endblock %}

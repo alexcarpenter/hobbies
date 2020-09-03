@@ -1,6 +1,7 @@
 const CleanCSS = require('clean-css');
 const { minify } = require("terser");
 const htmlmin = require('html-minifier');
+const slugify = require('@sindresorhus/slugify');
 const markdownIt = require('markdown-it')({
   html: true,
   breaks: true,
@@ -39,6 +40,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('strip_html', str => str.replace(/<script.*?<\/script>|<!--.*?-->|<style.*?<\/style>|<.*?>/g, ''));
 
   eleventyConfig.addFilter('permalink', str => str.replace(/\.html/g, ''));
+
+  eleventyConfig.addFilter('kebab', str => slugify(str));
 
   /**
    * Transforms
