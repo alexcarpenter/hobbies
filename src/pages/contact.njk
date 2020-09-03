@@ -8,7 +8,7 @@ permalink: /contact/
 
 {% block main %}
   <header>
-    <h1 class="{{ tailwind.heading }}">{{ title }}</h1>
+    <h1 class="{{ tailwind.title }}">{{ title }}</h1>
     {% if description %}
       <div class="prose">
         <p class="text-xl text-gray-700">{{ description | markdownify_inline | safe }}</p>

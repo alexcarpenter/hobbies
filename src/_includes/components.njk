@@ -5,17 +5,17 @@
 {% endmacro%}
 
 {% macro card(args) %}
-<article class="flex flex-col bg-gray-100">
+<article class="flex flex-col">
 {% if args.imgSrc %}
 {{ image({ src: args.imgSrc, alt: "", lazy: args.lazy } )}}
 {% endif %}
-<div class="p-4">
-<h3 class="text-xl font-bold text-green-700">{{ args.heading }}</h3>
+<div class="pt-4">
+<h3 class="text-xl font-bold text-green-700"><a class="hover:underline" href="{{ args.url }}">{{ args.heading }}</a></h3>
 <p class="mt-1">{{ args.description | safe }}</p>
 </div>
-<div class="mt-auto">
+{# <div class="mt-auto">
 {{ button({text: "Purchase on Amazon", href: "", fill: true, rounded: false}) }}
-</div>
+</div> #}
 </article>
 {% endmacro %}
 

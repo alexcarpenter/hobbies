@@ -1,7 +1,11 @@
 module.exports = {
   important: true,
   purge: {
-    content: ["./src/**/**/*.html", "./src/**/**/**/*.njk"],
+    content: [
+      "./src/**/**/*.html",
+      "./src/**/**/**/*.njk",
+      "./src/_data/tailwind.json"
+    ],
     options: {
       whitelist: [
         "pb-1/1",
@@ -55,6 +59,7 @@ module.exports = {
       "gray-700": "#585C5E",
       "gray-800": "#3E4244",
       "gray-900": "#23272A",
+      "salmon": "#f4724e",
       white: "#FFFFFF",
       black: "#000000",
     },
