@@ -21,7 +21,7 @@ permalink: /tagged/{{ tag | kebab }}/
 
 {% block main %}
   <header>
-    <h1 class="text-green-700 text-5xl font-bold">{{ tag }}</h1>
+    <h1 class="{{ tailwind.heading }}">{{ tag }}</h1>
     {% if description %}
       <div class="prose">
         <p class="text-xl text-gray-700">{{ description | markdownify_inline | safe }}</p>
