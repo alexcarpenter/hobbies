@@ -8,11 +8,31 @@ pagination:
     - posts
 permalink: /tagged/{{ tag | kebab }}/
 ---
-<h1>Tagged “{{ tag }}”</h1>
+{% extends "layouts/default.njk" %}
+{% import "components.njk" as components %}
 
-<ol>
 {% set taglist = collections[ tag ] %}
-{% for post in taglist | reverse %}
-  <li><a href="{{ post.url | url }}">{{ post.data.title }}</a></li>
-{% endfor %}
-</ol>
+
+{% block main %}
+  <h2 class="text-4xl md:text-5xl font-bold text-green-700">{{ tag }}</h2>
+  <div class="mt-8 grid lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-2">
+      <ul class="divide-y divide-gray-200">
+        {% for entry in taglist | reverse %}
+        <li class="{% if loop.first %}pb-8{% else %}py-8{% endif %}">
+          {{ components.entry({
+            imgSrc: entry.data.thumbnail,
+            lazy: loop.index > 2,
+            heading: entry.data.title,
+            description: entry.data.description,
+            url: entry.url
+          }) }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="lg:col-span-1 lg:border-l border-gray-200 lg:pl-8">
+    </div>
+  </div>
+{% endblock %}
