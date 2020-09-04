@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Traxxas Maxx
 description:
 thumbnail: /assets/images/traxxas-maxx-park.jpg

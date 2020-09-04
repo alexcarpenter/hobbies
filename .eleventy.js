@@ -9,9 +9,6 @@ const markdownIt = require("markdown-it")({
 });
 
 const ENV = require("./src/_data/env.js");
-// const PRODUCTS = require('./src/_data/products.json');
-const published = (p) =>
-  ENV.environment === "production" ? !p.data.draft : true;
 
 module.exports = function (eleventyConfig) {
   /**
@@ -59,13 +56,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("kebab", (str) => slugify(str));
 
   eleventyConfig.addFilter("tagged", (arr, str) => {
-    return arr
-      .filter((e) => e.data.tags && e.data.tags.includes(str))
-      .filter(published);
+    return arr.filter((e) => e.data.tags && e.data.tags.includes(str));
   });
 
   eleventyConfig.addFilter("findByName", (arr, names = []) => {
-    return arr.filter(e => names.includes(e.data.title))
+    return arr.filter((e) => names.includes(e.data.title));
   });
 
   /**
@@ -94,9 +89,7 @@ module.exports = function (eleventyConfig) {
    * Collections
    */
   eleventyConfig.addCollection("posts", (collection) => {
-    return [
-      ...collection.getFilteredByGlob("**/posts/*.md").filter(published),
-    ].reverse();
+    return [...collection.getFilteredByGlob("**/posts/*.md")].reverse();
   });
 
   /**
