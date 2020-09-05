@@ -18,14 +18,16 @@ class LiteYTEmbed extends HTMLElement {
       // https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#rule-2---attribute-escape-before-inserting-untrusted-data-into-html-common-attributes
       this.videoId = encodeURIComponent(this.getAttribute('videoid'));
       this.posterUrl = this.getAttribute('thumbnail');
+      this.playBtn = this.querySelector('.lty-playbtn');
   }
 
   connectedCallback() {
       this.style.backgroundImage = `url("${this.posterUrl}")`;
 
-      const playBtn = document.createElement('div');
-      playBtn.classList.add('lty-playbtn');
-      this.append(playBtn);
+    //   const playBtn = document.createElement('div');
+    //   playBtn.textContent = "Watch video"
+    //   playBtn.classList.add('lty-playbtn absolute right-0 bottom-0 p-3 bg-green-700 hover:bg-green-900 focus:bg-green-900 text-white flex items-center justify-center z-10');
+    //   this.append(playBtn);
 
       // On hover (or tap), warm up the TCP connections we're (likely) about to use.
       this.addEventListener('pointerover', LiteYTEmbed.warmConnections, {once: true});
@@ -33,7 +35,7 @@ class LiteYTEmbed extends HTMLElement {
       // Once the user clicks, add the real iframe and drop our play button
       // TODO: In the future we could be like amp-youtube and silently swap in the iframe during idle time
       //   We'd want to only do this for in-viewport or near-viewport ones: https://github.com/ampproject/amphtml/pull/5003
-      this.addEventListener('click', e => this.addIframe());
+      this.playBtn.addEventListener('click', e => this.addIframe());
   }
 
   // // TODO: Support the the user changing the [videoid] attribute
