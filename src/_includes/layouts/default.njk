@@ -32,6 +32,10 @@
     </main>
     {% include "partials/contentinfo.njk" %}
   </div>
+  {% set globalJS %}
+    {% include "assets/scripts/lite-yt-embed.js" %}
+  {% endset %}
+  <script>{{ globalJS | jsmin | safe }}</script>
   {% if gallery %}
     {% include "partials/gallery.njk" %}
     {% set js %}

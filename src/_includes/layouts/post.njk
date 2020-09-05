@@ -13,7 +13,7 @@
     {% endif %}
     {% if youtubeId %}
       <div class="mt-8">
-        {{ components.youtube({id: youtubeId }) }}
+        <lite-youtube videoid="{{ youtubeId }}" thumbnail="{{ thumbnail }}"></lite-youtube>
       </div>
     {% elseif thumbnail %}
       <div class="mt-8 relative">
