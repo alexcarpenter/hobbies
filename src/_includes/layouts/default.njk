@@ -32,17 +32,19 @@
     </main>
     {% include "partials/contentinfo.njk" %}
   </div>
-  {% set globalJS %}
-    {% include "assets/scripts/lite-yt-embed.js" %}
-  {% endset %}
-  <script>{{ globalJS | jsmin | safe }}</script>
+  {% if youtubeId %}
+    {% set youtubeJs %}
+      {% include "assets/scripts/lite-yt-embed.js" %}
+    {% endset %}
+    <script>{{ youtubeJs | jsmin | safe }}</script>
+  {% endif %}
   {% if gallery %}
     {% include "partials/gallery.njk" %}
-    {% set js %}
+    {% set lightBoxJs %}
       {% include "assets/scripts/wicg-inert.js" %}
       {% include "assets/scripts/lightbox.js" %}
     {% endset %}
-    <script>{{ js | jsmin | safe }}</script>
+    <script>{{ lightBoxJs | jsmin | safe }}</script>
   {% endif %}
 </body>
 </html>
