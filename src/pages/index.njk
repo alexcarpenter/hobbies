@@ -18,7 +18,7 @@ permalink: /
 {% block main %}
   {% callout %}
     <h2 class="text-4xl md:text-5xl font-bold text-white">Welcome!</h2>
-    <p class="mt-2 text-white text-xl mw-65ch">I'm Alex Carpenter and this is my personal website where I share my love for outdoor cooking, RC cars, gear, and more.</p>
+    <p class="mt-2 text-white text-xl max-w-screen-sm">I'm Alex Carpenter and this is my personal website where I share my love for outdoor cooking, RC cars, gear, and more. Follow along on <a href="https://instagram.com/alexcarp" class="underline">Instagram</a>, <a href="https://www.youtube.com/channel/UCvokT_ygRahyLeZE3WhTXwQ/" class="underline">YouTube</a>, or <a href="https://twitter.com/hybrid_alex" class="underline">Twitter</a>.</p>
   {% endcallout %}
   <section class="mt-16">
     <h2 class="text-4xl leading-tight font-bold text-green-700">Featured posts</h2>
@@ -53,13 +53,14 @@ permalink: /
       </div>
   </section>
   <section class="mt-16 pt-8 border-t-4 border-gray-200">
-    <header class="flex flex-wrap items-center justify-between">
+    <header class="flex flex-wrap flex-col md:flex-row items-start md:items-center md:justify-between">
       <h2 class="text-4xl leading-tight font-bold text-green-700 mr-2">RC Cars</h2>
       <a href="/tagged/rc-cars/" class="inline-flex items-center text-green-700 hover:underline">View more <svg class="ml-1" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
     </header>
     <div class="mt-8 grid grid-cols-2 md:grid-cols-3 gap-8">
       {% for entry in entries | tagged('RC Cars') | take(3) %}
         {{ components.card({
+          lazy: true,
           imgSrc: entry.data.thumbnail,
           heading: entry.data.title,
           description: entry.data.description,
@@ -69,13 +70,14 @@ permalink: /
     </div>
   </section>
   <section class="mt-16 pt-8 border-t-4 border-gray-200">
-    <header class="flex flex-wrap items-center justify-between">
+    <header class="flex flex-wrap flex-col md:flex-row items-start md:items-center md:justify-between">
       <h2 class="text-4xl leading-tight font-bold text-green-700 mr-2">Outdoor Cooking</h2>
       <a href="/tagged/outdoor-cooking/" class="inline-flex items-center text-green-700 hover:underline">View more <svg class="ml-1" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
     </header>
     <div class="mt-8 grid grid-cols-2 md:grid-cols-3 gap-8">
       {% for entry in entries | tagged('Outdoor Cooking') | take(3) %}
         {{ components.card({
+          lazy: true,
           imgSrc: entry.data.thumbnail,
           heading: entry.data.title,
           description: entry.data.description,

@@ -64,5 +64,17 @@
     "category": "RC Cars",
     "heading": "Traxxas Maxx 4s",
     "description": "Vel congue lorem nunc varius eros laoreet ante phasellus vestibulum dis leo aliquam litora aliquet dictum tincidunt consectetur turpis hendrerit"
+  },
+  {
+    "id": 12,
+    "category": "Outdoor Cooking",
+    "heading": "28\" Blackstone Griddle",
+    "description": "Vel congue lorem nunc varius eros laoreet ante phasellus vestibulum dis leo aliquam litora aliquet dictum tincidunt consectetur turpis hendrerit"
+  },
+  {
+    "id": 13,
+    "category": "Outdoor Cooking",
+    "heading": "26\" Weber Kettle Grill",
+    "description": "Vel congue lorem nunc varius eros laoreet ante phasellus vestibulum dis leo aliquam litora aliquet dictum tincidunt consectetur turpis hendrerit"
   }
 ]
