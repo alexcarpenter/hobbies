@@ -82,7 +82,7 @@ module.exports = function (eleventyConfig) {
    * Shortcodes
    */
   eleventyConfig.addPairedShortcode("callout", (content, variant = "green") => {
-    return `<div class="callout bg-gradient-to-br from-${variant}-700 to-${variant}-900"><div class="w-full max-w-screen-lg mx-auto px-4">${content}</div></div>`;
+    return `<div class="callout bg-gradient-to-br from-${variant}-800 to-${variant}-900"><div class="w-full max-w-screen-lg mx-auto px-4">${content}</div></div>`;
   });
 
   /**

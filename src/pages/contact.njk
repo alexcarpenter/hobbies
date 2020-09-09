@@ -11,7 +11,7 @@ permalink: /contact/
     <h1 class="{{ tailwind.title }}">{{ title }}</h1>
     {% if description %}
       <div class="prose">
-        <p class="text-xl text-gray-700">{{ description | markdownify_inline | safe }}</p>
+        <p class="text-xl">{{ description | markdownify_inline | safe }}</p>
       </div>
     {% endif %}
   </header>
@@ -25,13 +25,13 @@ permalink: /contact/
           <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="name">
             Your name
           </label>
-          <input class="appearance-none block w-full bg-gray-100 border border-gray-300 py-3 px-4 mb-3 rounded leading-tight focus:outline-none focus:border-green-700" name="name" type="text">
+          <input class="appearance-none block w-full bg-white border border-gray-300 py-3 px-4 mb-3 rounded leading-tight focus:outline-none focus:border-green-700" name="name" type="text">
         </div>
         <div class="w-full md:w-1/2 px-3">
           <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="email">
             Your email*
           </label>
-          <input class="appearance-none block w-full bg-gray-100 border border-gray-300 py-3 px-4 rounded leading-tight focus:outline-none focus:border-green-700" name="email" type="text" required>
+          <input class="appearance-none block w-full bg-white border border-gray-300 py-3 px-4 rounded leading-tight focus:outline-none focus:border-green-700" name="email" type="text" required>
         </div>
       </div>
       <div class="flex flex-wrap -mx-3 mb-6">
@@ -39,11 +39,11 @@ permalink: /contact/
           <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="message">
             Message*
           </label>
-          <textarea class="appearance-none block w-full bg-gray-100 border border-gray-300 py-3 px-4 mb-3 rounded leading-tight focus:outline-none focus:border-green-700" name="message" required></textarea>
+          <textarea class="appearance-none block w-full bg-white border border-gray-300 py-3 px-4 mb-3 rounded leading-tight focus:outline-none focus:border-green-700" name="message" required></textarea>
         </div>
       </div>
       <div>
-        <input type="submit" value="Send message" class="bg-green-700 hover:bg-green-900 text-white px-6 py-3 rounded cursor-pointer">
+        <input type="submit" value="Send message" class="bg-gradient-to-br from-green-700 to-green-800 hover:from-green-800 focus:from-green-800 text-white px-6 py-3 rounded cursor-pointer">
       </div>
     </form>
   </div>

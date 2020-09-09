@@ -24,13 +24,13 @@ permalink: /tagged/{{ tag | kebab }}/
     <h1 class="{{ tailwind.title }}">{{ tag }}</h1>
     {% if description %}
       <div class="prose">
-        <p class="text-xl text-gray-700">{{ description | markdownify_inline | safe }}</p>
+        <p class="text-xl">{{ description | markdownify_inline | safe }}</p>
       </div>
     {% endif %}
   </header>
   <div class="mt-8 grid lg:grid-cols-3 gap-8">
     <div class="lg:col-span-2">
-      <ul class="divide-y divide-gray-200">
+      <ul class="divide-y divide-gray-300">
         {% for entry in taglist | reverse %}
         <li class="{% if loop.first %}pb-8{% else %}py-8{% endif %}">
           {{ components.entry({
@@ -45,7 +45,7 @@ permalink: /tagged/{{ tag | kebab }}/
       </ul>
     </div>
 
-    <div class="lg:col-span-1 lg:border-l border-gray-200 lg:pl-8">
+    <div class="lg:col-span-1 lg:border-l border-gray-300 lg:pl-8">
     </div>
   </div>
 {% endblock %}

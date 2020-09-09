@@ -10,7 +10,7 @@
 {{ image({ src: args.imgSrc, alt: "", lazy: args.lazy } )}}
 {% endif %}
 <div class="pt-4">
-<h3 class="text-xl font-bold text-green-700"><a class="hover:underline" href="{{ args.url }}">{{ args.heading }}</a></h3>
+<h3 class="text-xl font-bold text-green-800"><a class="hover:underline" href="{{ args.url }}">{{ args.heading }}</a></h3>
 <p class="mt-1">{{ args.description | safe }}</p>
 </div>
 {# <div class="mt-auto">
@@ -19,15 +19,34 @@
 </article>
 {% endmacro %}
 
+{# <article class="flex items-start md:flex-col">
+  <div class="w-1/5 md:w-full flex-shrink-0 mr-8 md:mb-4 md:mr-0">
+    <figure class="w-100">
+      <div class="relative pb-1/1 md:pb-16/9 bg-gray-100">
+        <img class="m-0 absolute h-full w-full object-cover" src="{{ entry.data.thumbnail }}" alt="">
+      </div>
+    </figure>
+  </div>
+  <div>
+    <h3 class="text-xl font-bold text-green-800"><a class="hover:underline" href="{{ entry.url }}">{{ entry.data.title }}</a></h3>
+    <p class="mt-1">{{ entry.data.description }}</p>
+  </div>
+</article> #}
+
 {% macro entry(args) %}
-<article class="flex items-start">
+<article class="flex items-start{% if args.mdStacked %} md:flex-col{% endif %}">
 {% if args.imgSrc %}
-<div class="w-1/5 flex-shrink-0 mr-8">
-{{ image({ src: args.imgSrc, alt: "", ratio: "1/1", lazy: args.lazy } )}}
+<div class="w-1/5 flex-shrink-0 mr-8{% if args.mdStacked %} md:w-full md:mb-4 md:mr-0{% endif %}">
+<figure class="w-100">
+<div class="relative pb-1/1 bg-gray-100 {% if args.mdStacked %} md:pb-16/9{% endif %}">
+<img class="m-0 absolute h-full w-full object-cover" src="{{ args.imgSrc }}" alt=""{% if args.lazy %} loading="lazy"{% endif %}>
+</div>
+</figure>
 </div>
 {% endif %}
 <div>
-<h3 class="text-xl font-bold text-green-700"><a class="hover:underline" href="{{ args.url }}">{{ args.heading }}</a></h3>
+{# <span class="mb-1 text-sm text-gray-600 tracking-wider leading-none uppercase">Outdoor Cooking</span> #}
+<h3 class="text-xl font-bold text-green-800"><a class="hover:underline focus:underline" href="{{ args.url }}">{{ args.heading }}</a></h3>
 <p class="mt-1">{{ args.description }}</p>
 </div>
 </article>
@@ -66,18 +85,27 @@
 </figure>
 {% endmacro %}
 
+{% macro youtubeLite(args) %}
+<lite-youtube videoid="{{ args.youtubeId }}" thumbnail="{{ args.thumbnail }}">
+<button class="lty-playbtn absolute right-0 bottom-0 p-3 bg-green-800 hover:bg-green-900 focus:bg-green-900 text-white flex items-center justify-center z-10">
+<span class="hidden sm:inline mr-2">Watch video</span>
+<svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+</button>
+</lite-youtube>
+{% endmacro %}
+
 {% macro prosCons(args) %}
-<div class="border border-gray-200 grid lg:grid-cols-2">
-<div class="px-8 pt-8 pb-3 lg:col-span-1 lg:border-r border-gray-200">
-<h3 class="mt-0 text-green-700 text-xl">Pros</h3>
+<div class="border border-gray-300 grid lg:grid-cols-2">
+<div class="px-8 pt-8 pb-3 lg:col-span-1 lg:border-r border-gray-300">
+<h3 class="mt-0 text-green-800 text-xl">Pros</h3>
 <ul>
 {% for pro in args.pros %}
 <li>{{ pro }}</li>
 {% endfor %}
 </ul>
 </div>
-<div class="px-8 pt-8 pb-3 lg:col-span-1 border-t border-gray-200 lg:border-none">
-<h3 class="mt-0 text-green-700 text-xl">Cons</h3>
+<div class="px-8 pt-8 pb-3 lg:col-span-1 border-t border-gray-300 lg:border-none">
+<h3 class="mt-0 text-green-800 text-xl">Cons</h3>
 <ul>
 {% for con in args.cons %}
 <li>{{ con }}</li>

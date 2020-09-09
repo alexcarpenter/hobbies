@@ -11,14 +11,14 @@ permalink: /kit/
     <h1 class="{{ tailwind.title }}">{{ title }}</h1>
     {% if description %}
       <div class="prose">
-        <p class="text-xl text-gray-700">{{ description | markdownify_inline | safe }}</p>
+        <p class="text-xl">{{ description | markdownify_inline | safe }}</p>
       </div>
     {% endif %}
   </header>
   {% for category, items in products | groupby("category") %}
-    <section class="mt-16 pt-8 border-t-4 border-gray-200">
+    <section class="mt-16 pt-8 border-t-4 border-gray-300">
       <header class="flex flex-wrap items-center justify-between">
-        <h2 class="text-4xl leading-tight font-bold text-green-700">{{ category }}</h2>
+        <h2 class="text-4xl leading-tight font-bold text-green-800" id="{{ category | kebab }}">{{ category }}</h2>
       </header>
       <div class="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-8">
         {% for item in items %}

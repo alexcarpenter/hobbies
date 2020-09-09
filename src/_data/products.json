@@ -76,5 +76,18 @@
     "category": "Outdoor Cooking",
     "heading": "26\" Weber Kettle Grill",
     "description": "Vel congue lorem nunc varius eros laoreet ante phasellus vestibulum dis leo aliquam litora aliquet dictum tincidunt consectetur turpis hendrerit"
+  },
+  {
+    "id": 14,
+    "category": "Outdoor Cooking",
+    "heading": "Ooni Fyra Pizza Oven",
+    "description": "Vel congue lorem nunc varius eros laoreet ante phasellus vestibulum dis leo aliquam litora aliquet dictum tincidunt consectetur turpis hendrerit"
+  },
+  {
+    "id": 15,
+    "category": "Outdoor Cooking",
+    "heading": "18\" GrillGrates",
+    "description": "Vel congue lorem nunc varius eros laoreet ante phasellus vestibulum dis leo aliquam litora aliquet dictum tincidunt consectetur turpis hendrerit",
+    "amazon": "https://www.amazon.com/s?me=A2QCNQ4EYC6YX7&marketplaceID=ATVPDKIKX0DER"
   }
 ]

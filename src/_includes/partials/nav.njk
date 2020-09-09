@@ -5,7 +5,7 @@
 <nav>
   <ul class="flex space-x-8">
     {% for item in items %}
-      <li><a class="text-green-700 hover:underline{% if page.url == item.slug %} font-bold{% endif %}"{% if page.url == item.slug %} aria-current="page"{% endif %} href="{{ item.slug }}">{{ item.label }}</a></li>
+      <li><a class="text-green-800 hover:underline focus:underline{% if page.url == item.slug %} font-bold{% endif %}"{% if page.url == item.slug %} aria-current="page"{% endif %} href="{{ item.slug }}">{{ item.label }}</a></li>
     {% endfor %}
   </ul>
 </nav>
