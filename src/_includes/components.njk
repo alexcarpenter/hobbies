@@ -36,7 +36,7 @@
 {% macro entry(args) %}
 <article class="flex items-start{% if args.mdStacked %} md:flex-col{% endif %}">
 {% if args.imgSrc %}
-<div class="w-1/5 flex-shrink-0 mr-8{% if args.mdStacked %} md:w-full md:mb-4 md:mr-0{% endif %}">
+<div class="w-1/5 flex-shrink-0 mr-4{% if args.mdStacked %} md:w-full md:mb-4 md:mr-0{% endif %}">
 <figure class="w-100">
 <div class="relative pb-1/1 bg-gray-100 {% if args.mdStacked %} md:pb-16/9{% endif %}">
 <img class="m-0 absolute h-full w-full object-cover" src="{{ args.imgSrc }}" alt=""{% if args.lazy %} loading="lazy"{% endif %}>
