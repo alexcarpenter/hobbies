@@ -1,6 +1,6 @@
 ---
 title: Arrma Notorious 6s Unboxing
-description: First looks at my new Arrma Notorious 6s stunt truck
+description: First looks at my new Arrma Notorious 6s stunt truck.
 thumbnail: /assets/images/arrma-notorious-6s.jpg
 gallery:
   [

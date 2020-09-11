@@ -10,6 +10,10 @@
       lightBoxHeading = lightBox.querySelector("h2"),
       previousActiveElement = null;
 
+  var isHidden = function() {
+    return lightBox.classList.contains("hidden");
+  }
+
   var show = function () {
     previousActiveElement = document.activeElement;
     pageContainer.inert = true;
@@ -63,16 +67,17 @@
   };
 
   var keyboardEvents = function (event) {
+    if (isHidden()) return;
     // Right arrow key
-    if (event.keyCode === 39 && lightBox.classList.contains !== "hidden") {
+    if (event.keyCode === 39) {
       next();
     }
     // Left arrow key
-    if (event.keyCode === 37 && lightBox.classList.contains !== "hidden") {
+    if (event.keyCode === 37) {
       previous();
     }
     // Escape key
-    if (event.keyCode === 27 && lightBox.classList.contains !== "hidden") {
+    if (event.keyCode === 27) {
       hide();
     }
   };
