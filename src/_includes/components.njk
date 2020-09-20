@@ -1,7 +1,8 @@
 {% macro button(args) %}
 {% set variant = args.variant | default("green") %}
-{% set bordered = args.bordered | default(true) %}
-<a href="{{ args.href }}" class="bg-{{ variant }}-700 hover:bg-{{ variant }}-900 text-white px-6 py-3{% if args.rounded %} rounded{% endif %}{% if args.fill %} flex{% else %} inline-flex{% endif %} justify-center align-center">{{ args.text }}</a>
+{% set rounded = args.rounded | default(true) %}
+{% set relative = args.href | isRelativeUrl %}
+<a href="{{ args.href }}" class="bg-gradient-to-br from-{{ variant }}-700 to-{{ variant }}-800 hover:from-{{ variant }}-800 focus:from-{{ variant }}-800 text-white px-6 py-3{% if rounded %} rounded{% endif %}{% if args.fill %} flex{% else %} inline-flex{% endif %} justify-center items-center no-underline space-x-2"{% if relative == false %} rel="external"{% endif %}><span>{{ args.text }}</span>{% if relative == false %}<svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>{% endif %}</a>
 {% endmacro%}
 
 {% macro card(args) %}
@@ -10,7 +11,7 @@
 {{ image({ src: args.imgSrc, alt: "", lazy: args.lazy } )}}
 {% endif %}
 <div class="pt-4">
-<h3 class="text-xl font-bold text-green-800"><a class="hover:underline" href="{{ args.url }}">{{ args.heading }}</a></h3>
+<h3 class="text-xl font-bold text-green-800 leading-tight"><a class="hover:underline focus:underline" href="{{ args.url }}">{{ args.heading }}</a></h3>
 <p class="mt-1">{{ args.description | safe }}</p>
 </div>
 {# <div class="mt-auto">
@@ -46,7 +47,7 @@
 {% endif %}
 <div>
 {# <span class="mb-1 text-sm text-gray-600 tracking-wider leading-none uppercase">Outdoor Cooking</span> #}
-<h3 class="text-xl font-bold text-green-800"><a class="hover:underline focus:underline" href="{{ args.url }}">{{ args.heading }}</a></h3>
+<h3 class="text-xl font-bold text-green-800 leading-tight"><a class="hover:underline focus:underline" href="{{ args.url }}">{{ args.heading }}</a></h3>
 <p class="mt-1">{{ args.description }}</p>
 </div>
 </article>
@@ -113,4 +114,19 @@
 </ul>
 </div>
 </div>
+{% endmacro %}
+
+{% macro svg(name) %}
+{% switch name %}
+{% case 'external' %}
+<svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+{% case 'rightArrow' %}
+<svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+{% case 'leftArrow' %}
+<svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+{% case 'expand' %}
+<svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize-2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+{% default %}
+<p>No icon matches "{{ name }}"</p>
+{% endswitch %}
 {% endmacro %}

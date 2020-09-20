@@ -19,19 +19,31 @@ module.exports = {
     typography: (theme) => ({
       default: {
         css: {
-          color: theme("colors.gray-900"),
+          color: theme("colors.gray.800"),
           lineHeight: "1.5",
           h1: {
-            color: theme("colors.green-700"),
+            marginTop: "1.5em",
+            marginBottom: ".5em",
+            color: theme("colors.green.800"),
+          },
+          h2: {
+            marginTop: "1.5em",
+            marginBottom: ".5em",
+            color: theme("colors.green.800"),
+          },
+          h3: {
+            marginTop: "1.5em",
+            marginBottom: ".5em",
+            color: theme("colors.green.800"),
           },
           a: {
-            color: theme("colors.green-700"),
+            color: theme("colors.green.800"),
             "&:hover": {
-              color: theme("colors.green-900"),
+              color: theme("colors.green.900"),
             },
           },
           blockquote: {
-            borderColor: theme("colors.green-700"),
+            borderColor: theme("colors.green.800"),
             fontStyle: "normal",
             fontWeight: "400",
           },
@@ -49,6 +61,9 @@ module.exports = {
       spacing: {
         "1/1": "100%",
         "16/9": "56.25%",
+      },
+      maxWidth: {
+        '1/2': '50%',
       },
     },
   },

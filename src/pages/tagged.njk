@@ -20,15 +20,11 @@ permalink: /tagged/{{ tag | kebab }}/
 {% set description = descriptionsMap[tag] %}
 
 {% block main %}
-  <header>
-    <h1 class="{{ tailwind.title }}">{{ tag }}</h1>
-    {% if description %}
-      <div class="prose">
-        <p class="text-xl">{{ description | markdownify_inline | safe }}</p>
-      </div>
-    {% endif %}
-  </header>
-  <div class="mt-8 grid lg:grid-cols-3 gap-8">
+  {% callout %}
+    <h1 class="text-4xl md:text-5xl font-bold text-white">{{ tag }}</h1>
+    <p class="text-xl text-white">{{ description | markdownify_inline | safe }}</p>
+  {% endcallout %}
+  <div class="mt-16 grid lg:grid-cols-3 gap-8">
     <div class="lg:col-span-2">
       <ul class="divide-y divide-gray-300">
         {% for entry in taglist | reverse %}

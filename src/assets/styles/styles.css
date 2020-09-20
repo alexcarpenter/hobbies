@@ -621,7 +621,7 @@ video {
 }
 
 .prose {
-  color: #4a5568;
+  color: #2d3748;
   max-width: 65ch;
 }
 
@@ -634,11 +634,12 @@ video {
 }
 
 .prose a {
-  color: #1a202c;
+  color: #276749;
   text-decoration: underline;
 }
 
 .prose a:hover {
+  color: #22543d;
 }
 
 .prose strong {
@@ -698,6 +699,7 @@ video {
   margin-top: 1.6em;
   margin-bottom: 1.6em;
   padding-left: 1em;
+  border-color: #276749;
 }
 
 .prose blockquote p:first-of-type::before {
@@ -709,29 +711,29 @@ video {
 }
 
 .prose h1 {
-  color: #1a202c;
+  color: #276749;
   font-weight: 800;
   font-size: 2.25em;
-  margin-top: 0;
-  margin-bottom: 0.8888889em;
+  margin-top: 1.5em;
+  margin-bottom: .5em;
   line-height: 1.1111111;
 }
 
 .prose h2 {
-  color: #1a202c;
+  color: #276749;
   font-weight: 700;
   font-size: 1.5em;
-  margin-top: 2em;
-  margin-bottom: 1em;
+  margin-top: 1.5em;
+  margin-bottom: .5em;
   line-height: 1.3333333;
 }
 
 .prose h3 {
-  color: #1a202c;
+  color: #276749;
   font-weight: 600;
   font-size: 1.25em;
-  margin-top: 1.6em;
-  margin-bottom: 0.6em;
+  margin-top: 1.5em;
+  margin-bottom: .5em;
   line-height: 1.6;
 }
 
@@ -1890,7 +1892,7 @@ video {
 }
 
 .prose ul > li::before {
-  background-color: ;
+  background-color: #a0aec0;
 }
 
 .top-50 {
@@ -1899,7 +1901,7 @@ video {
 }
 
 lite-youtube {
-  background-color: ;
+  background-color: #a0aec0;
   position: relative;
   display: block;
   contain: content;
@@ -13096,6 +13098,10 @@ lite-youtube.lyt-activated > .lty-playbtn {
 
 .max-w-screen-xl {
   max-width: 1280px !important;
+}
+
+.max-w-1\/2 {
+  max-width: 50% !important;
 }
 
 .min-h-0 {
@@ -34905,6 +34911,10 @@ lite-youtube.lyt-activated > .lty-playbtn {
     max-width: 1280px !important;
   }
 
+  .sm\:max-w-1\/2 {
+    max-width: 50% !important;
+  }
+
   .sm\:min-h-0 {
     min-height: 0 !important;
   }
@@ -56645,6 +56655,10 @@ lite-youtube.lyt-activated > .lty-playbtn {
 
   .md\:max-w-screen-xl {
     max-width: 1280px !important;
+  }
+
+  .md\:max-w-1\/2 {
+    max-width: 50% !important;
   }
 
   .md\:min-h-0 {
@@ -78389,6 +78403,10 @@ lite-youtube.lyt-activated > .lty-playbtn {
     max-width: 1280px !important;
   }
 
+  .lg\:max-w-1\/2 {
+    max-width: 50% !important;
+  }
+
   .lg\:min-h-0 {
     min-height: 0 !important;
   }
@@ -100129,6 +100147,10 @@ lite-youtube.lyt-activated > .lty-playbtn {
 
   .xl\:max-w-screen-xl {
     max-width: 1280px !important;
+  }
+
+  .xl\:max-w-1\/2 {
+    max-width: 50% !important;
   }
 
   .xl\:min-h-0 {

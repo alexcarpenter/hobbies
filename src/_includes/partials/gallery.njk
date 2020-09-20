@@ -3,7 +3,7 @@
     <h2 class="sr-only md:not-sr-only text-white" tabindex="0">{{ title }} gallery</h2>
     <button class="relative ml-auto w-12 h-12 cursor-pointer flex items-center justify-center z-20" data-lightbox-hide>
       <span class="sr-only">Close</span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      {{ components.svg('leftArrow') }}
     </button>
   </header>
   <nav class="absolute top-50 left-0 right-0 flex justify-between pointer-events-none z-20">
@@ -13,11 +13,11 @@
     </button>
     <button class="pointer-events-auto w-12 h-12 bg-green-800 hover:bg-green-900 text-white cursor-pointer flex items-center justify-center" data-lightbox-next>
       <span class="sr-only">Next</span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      {{ components.svg('rightArrow') }}
     </button>
   </nav>
   <div class="absolute top-50 left-0 right-0 flex items-center justify-center z-10 pointer-events-none">
-    <div class="max-w-screen-lg pointer-events-auto">
+    <div class="max-w-screen-lg max-h-full pointer-events-auto">
       {% for image in gallery %}
         <img class="hidden" src="{{ image }}" alt="{{ title }} - {{ loop.index }}" loading="lazy">
       {% endfor %}
